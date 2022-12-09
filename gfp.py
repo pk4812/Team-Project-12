@@ -21,13 +21,12 @@ def determine_favorites(favorites_input):
     Returns:
         
     """
-    """
-    chosen_favorites = df.query('type.str.startswith(@favorites_input)', engine = "python")
-    inquired_favorites = chosen_favorites.describe()
-    print(inquired_favorites)
-    """
+    
+    chosen_favorites = df.query('Names.str.startswith(@favorites_input)', engine = "python")
+    print(chosen_favorites)
+    
     pass
-
+'''
 def determine_emer_con_list(emer_con_list_input):
     """
     Comments:
@@ -38,7 +37,7 @@ def determine_emer_con_list(emer_con_list_input):
         
     """
 
-
+    
 
     pass
 
@@ -97,7 +96,7 @@ def determine_international(international_input):
 
     
     pass
-
+'''
 def main(filename):
     """
     Comments:
@@ -107,20 +106,23 @@ def main(filename):
     Returns:
         
     """
-    favorites_input = input("Enter your Favorite contacts: ")
+    favorites_input = list(input("Enter your Favorite contacts: ").split(","))
+    '''
     emer_con_list_input = input("Enter your Emergency Contacts: ")
     work_input = input("Enter your Work related Contacts: ")
     education_input = input("Enter your School related Contacts: ")
     hobbies_input = input("Enter your Hobby Contacts: ")
     international_input = input("Enter your International Contacts: ")
+    '''
 
     favorites = determine_favorites(favorites_input)
+    '''
     emer_con_list = determine_emer_con_list(emer_con_list_input)
     work = determine_work(work_input)
     education = determine_education(education_input)
     hobbies = determine_hobbies(hobbies_input)
     international = determine_international(international_input)
-
+    '''
     print(df)
 
     pass
