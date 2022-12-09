@@ -22,6 +22,9 @@ def determine_favorites(favorites_input):
         
     """
 
+    chosen_favorites = df.query('type.str.startswith(@favorites_input)', engine = "python")
+    inquired_favorites = chosen_favorites.describe()
+    print(inquired_favorites)
 
     pass
 
@@ -109,7 +112,7 @@ def main(filename):
     work_input = input("Enter your Work related Contacts: ")
     education_input = input("Enter your School related Contacts: ")
     hobbies_input = input("Enter your Hobby Contacts: ")
-    international_input = input("Enter your international Contacts: ")
+    international_input = input("Enter your International Contacts: ")
 
     favorites = determine_favorites(favorites_input)
     emer_con_list = determine_emer_con_list(emer_con_list_input)
