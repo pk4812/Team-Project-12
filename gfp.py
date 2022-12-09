@@ -21,11 +21,11 @@ def determine_favorites(favorites_input):
     Returns:
         
     """
-
+    """
     chosen_favorites = df.query('type.str.startswith(@favorites_input)', engine = "python")
     inquired_favorites = chosen_favorites.describe()
     print(inquired_favorites)
-
+    """
     pass
 
 def determine_emer_con_list(emer_con_list_input):
@@ -121,6 +121,8 @@ def main(filename):
     hobbies = determine_hobbies(hobbies_input)
     international = determine_international(international_input)
 
+    print(df)
+
     pass
 
 def parse_args(args_list):
@@ -134,12 +136,12 @@ def parse_args(args_list):
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', type = str, help = 'The name of the file wth the contact data')
-    parser.add_argument('favorites', type = str, help = 'The names of the users favorite contacts')
-    parser.add_argument('emergency', type = str, help = 'The names of the users emergency contacts')
-    parser.add_argument('work', type = str, help = 'The name of the users work contacts')
-    parser.add_argument('education', type = str, help = 'The name of the users school contacts')
-    parser.add_argument('hobbies', type = str, help = 'The name of the users hobby contact')
-    parser.add_argument('international', type = str, help = 'The name of the users international contacts')
+    #parser.add_argument('favorites', type = str, help = 'The names of the users favorite contacts')
+    #parser.add_argument('emergency', type = str, help = 'The names of the users emergency contacts')
+    #parser.add_argument('work', type = str, help = 'The name of the users work contacts')
+    #parser.add_argument('education', type = str, help = 'The name of the users school contacts')
+    #parser.add_argument('hobbies', type = str, help = 'The name of the users hobby contact')
+    #parser.add_argument('international', type = str, help = 'The name of the users international contacts')
     args = parser.parse_args(args_list)
 
     return args
@@ -148,4 +150,4 @@ if __name__ == "__main__":
 
     args = parse_args(sys.argv[1:])
 
-    main(args.main)
+    main(args.filename)
