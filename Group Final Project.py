@@ -10,9 +10,9 @@ import argparse
 import pandas as pd
 
 #creates a dataframe that takes in data from a .csv file and will give them headers.
-df = pd.read_csv()
+df = pd.read_csv("contacts.csv", names = ["Names", "Emails", "Phone Numbers"])
 
-def favorites():
+def determine_favorites(favorites_input):
     """
     Comments:
         Takes input from user and creates a favorites contact group, using the dataframe.
@@ -25,7 +25,7 @@ def favorites():
 
     pass
 
-def emer_con_list():
+def determine_emer_con_list(emer_con_list_input):
     """
     Comments:
         Takes input from user and creates an emergency contact list group, using the dataframe.
@@ -39,7 +39,7 @@ def emer_con_list():
 
     pass
 
-def work():
+def determine_work(work_input):
     """
     Comments:
         Takes input from user and creates a work contact group, using the dataframe.
@@ -53,7 +53,7 @@ def work():
     
     pass
 
-def education():
+def determine_education(education_input):
     """
     Comments:
         Takes input from user and creates an education contact group, using the dataframe.
@@ -67,7 +67,7 @@ def education():
     
     pass
 
-def hobbies():
+def determine_hobbies(hobbies_input):
     """
     Comments:
         Takes input from user and creates a hobbies contact group, using the dataframe.
@@ -81,7 +81,7 @@ def hobbies():
     
     pass
 
-def international():
+def determine_international(international_input):
     """
     Comments:
         Takes input from user and creates a international contacts group, using the dataframe.
@@ -95,7 +95,7 @@ def international():
     
     pass
 
-def main():
+def main(filename):
     """
     Comments:
         Will ask for certain inputs from user, as arguments, to create certain groups, using the dataframe.  
@@ -104,9 +104,20 @@ def main():
     Returns:
         
     """
+    favorites_input = input("Enter your Favorite contacts: ")
+    emer_con_list_input = input("Enter your Emergency Contacts: ")
+    work_input = input("Enter your Work related Contacts: ")
+    education_input = input("Enter your School related Contacts: ")
+    hobbies_input = input("Enter your Hobby Contacts: ")
+    international_input = input("Enter your international Contacts: ")
 
+    favorites = determine_favorites(favorites_input)
+    emer_con_list = determine_emer_con_list(emer_con_list_input)
+    work = determine_work(work_input)
+    education = determine_education(education_input)
+    hobbies = determine_hobbies(hobbies_input)
+    international = determine_international(international_input)
 
-    
     pass
 
 def parse_args(args_list):
@@ -120,12 +131,12 @@ def parse_args(args_list):
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', type = str, help = 'The name of the file wth the contact data')
-        #ARGUMENT THAT TAKES IN INPUT FROM USER TO CREATE FAVORITES GROUP WILL BE ADDED.
-        #ARGUMENT THAT TAKES IN INPUT FROM USER TO CREATE EMERGENCY CONTACT LIST GROUP WILL BE ADDED.
-        #ARGUMENT THAT TAKES IN INPUT FROM USER TO CREATE WORK GROUP WILL BE ADDED.
-        #ARGUMENT THAT TAKES IN INPUT FROM USER TO CREATE EDUCATION GROUP WILL BE ADDED.
-        #ARGUMENT THAT TAKES IN INPUT FROM USER TO CREATE HOBBIES GROUP WILL BE ADDED.
-        #ARGUMENT THAT TAKES IN INPUT FROM USER TO CREATE INTERNATIONAL GROUP WILL BE ADDED.
+    parser.add_argument('favorites', type = str, help = 'The names of the users favorite contacts')
+    parser.add_argument('emergency', type = str, help = 'The names of the users emergency contacts')
+    parser.add_argument('work', type = str, help = 'The name of the users work contacts')
+    parser.add_argument('education', type = str, help = 'The name of the users school contacts')
+    parser.add_argument('hobbies', type = str, help = 'The name of the users hobby contact')
+    parser.add_argument('international', type = str, help = 'The name of the users international contacts')
     args = parser.parse_args(args_list)
 
     return args
