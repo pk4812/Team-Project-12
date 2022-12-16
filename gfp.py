@@ -125,7 +125,6 @@ def main(filename:str):
             methods_ran.append(6)
 
         elif menu_choice == 7:
-            
             methods_ran.append(7)
             methods_ran.sort()
 
