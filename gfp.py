@@ -10,25 +10,25 @@ import argparse
 import pandas as pd
 
 def contacts_picker(input, df):
-    """
-    Comments:
-        Takes input from user and creates a filtered contact group, using the dataframe.
-    Parameters:
-        Input, dataframe.
+    """Takes contact name input from user and creates a filtered contact group 
+    using the dataframe. Returns filtered group for that category.
+    
+    Arguments:
+        input (tuple): collection of names the user wants to put in a category
+        df (dataframe): pandas dataframe of the contacts list csv
     Returns:
-        Queried (by name) dataframe. 
+        chosen_contacts (dataframe): filtered dataframe group filtered by name
     """
     chosen_contacts = df.query('Names.str.startswith(@input)', engine = "python")
     return(chosen_contacts)
 
 def print_menu():
-    """
-    Comments:
-        Method that prints out a user interface menu.
-    Parameters:
-        N/A.
+    """Outputs menu options to terminal for user interface
+    
+    Arguments:
+        None
     Returns:
-        User interface. 
+        None
     """
     print(
     """
@@ -47,22 +47,20 @@ def print_menu():
     )
 
 def choice():
-    """
-    Comments:
-        Method that receives input from the user, in the command line.
-    Parameters:
-        N/A.
+    """Asks for user's choice within the menu options
+    
+    Arguments:
+        None
     Returns:
-        User input.
+        choice (int): the numbered menu option for operation
     """
     choice = int(input("\nPlease enter your choice: "))
     return choice
 
 def contacts(filename:str):
-    """
-    Comments:
-        Method that prints out the .csv file after the menu to show their contact options.
-    Parameters:
+    """Method that prints out the .csv file after the menu to show their contact options.
+    
+    Arguments:
         Filename.
     Returns:
         Printed csv file in dataframe format.
@@ -71,10 +69,9 @@ def contacts(filename:str):
     print("Here are your contacts list to choose from: \n", df)
 
 def main(filename:str):
-    """
-    Comments:
-        Will receive certain inputs from user, as arguments, to create filtered groups, using the dataframe.  
-    Parameters:
+    """Will receive certain inputs from user, as arguments, to create filtered groups, using the dataframe.  
+    
+    Arguments:
         Filename.
     Returns:
         Users filtered contacts list. 
@@ -150,10 +147,9 @@ def main(filename:str):
             menu_choice = choice()
 
 def parse_args(args_list):
-    """
-    Comments:
-        Takes a list of strings from the command prompt and passes them through as arguments
-    Args:
+    """Takes a list of strings from the command prompt and passes them through as arguments
+    
+    Arguments:
         args_list (list) : the list of strings from the command prompt
     Returns:
         args (ArgumentParser)
@@ -165,7 +161,7 @@ def parse_args(args_list):
     return args
 
 if __name__ == "__main__":
-
+    """_summary_
+    """
     args = parse_args(sys.argv[1:])
-
     main(args.filename)
